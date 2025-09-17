@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/lap-missing/service/lap-missing.worker.ts"],
-  "sourcesContent": ["/// <reference lib=\"webworker\" />\n\nimport { LapMissing } from '../model/lap-missing';\n\naddEventListener('message', ({ data }) => {\n\n  const lapMissing = data.lapMissing as LapMissing[];\n\n  const lapMissingByRaceNumber = getLapMissingByRaceNumber(lapMissing);\n  const lapMissingCount = lapMissing.length;\n\n  postMessage({\n    lapMissingByRaceNumber: lapMissingByRaceNumber,\n    lapMissingCount: lapMissingCount\n  });\n});\n\nfunction getLapMissingByRaceNumber(lapMissing: LapMissing[]): Map<number, number[]> {\n  const result = new Map<number, number[]>();\n  lapMissing.forEach(lap => {\n    const raceNumber = lap.raceNumber;\n    if (result.has(raceNumber)) {\n      result.get(raceNumber)?.push(lap.lapNumber);\n    } else {\n      result.set(raceNumber, [lap.lapNumber]);\n    }\n  });\n  return result;\n}\n"],
-  "mappings": ";AAIA,iBAAiB,WAAW,CAAC,EAAE,KAAK,MAAM;AAExC,QAAM,aAAa,KAAK;AAExB,QAAM,yBAAyB,0BAA0B,UAAU;AACnE,QAAM,kBAAkB,WAAW;AAEnC,cAAY;AAAA,IACV;AAAA,IACA;AAAA,EACF,CAAC;AACH,CAAC;AAED,SAAS,0BAA0B,YAAiD;AAClF,QAAM,SAAS,oBAAI,IAAsB;AACzC,aAAW,QAAQ,SAAO;AACxB,UAAM,aAAa,IAAI;AACvB,QAAI,OAAO,IAAI,UAAU,GAAG;AAC1B,aAAO,IAAI,UAAU,GAAG,KAAK,IAAI,SAAS;AAAA,IAC5C,OAAO;AACL,aAAO,IAAI,YAAY,CAAC,IAAI,SAAS,CAAC;AAAA,IACxC;AAAA,EACF,CAAC;AACD,SAAO;AACT;",
-  "names": []
-}

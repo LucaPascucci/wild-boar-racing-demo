@@ -1,0 +1,1 @@
+addEventListener("message",({data:e})=>{let r=e.lapSimulatorConfig,a=e.virtualLastCumulatedTimeByRaceNumber,n=r.referenceRaceNumber,t=o(n,a);postMessage({virtualGapByRaceNumber:t})});function o(e,r){let a=new Map,n=r.get(e);return n&&r.forEach((t,u)=>{if(e===u)a.set(u,0);else{let m=n-t;a.set(u,m)}}),a}

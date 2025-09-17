@@ -1,0 +1,1 @@
+addEventListener("message",({data:i})=>{let s=i.lapMissing,e=a(s),n=s.length;postMessage({lapMissingByRaceNumber:e,lapMissingCount:n})});function a(i){let s=new Map;return i.forEach(e=>{let n=e.raceNumber;s.has(n)?s.get(n)?.push(e.lapNumber):s.set(n,[e.lapNumber])}),s}
